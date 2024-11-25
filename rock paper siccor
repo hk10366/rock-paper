@@ -1,0 +1,67 @@
+import random
+options=['Rock','Paper','Scissor']
+dict={"Scissor":"Paper"
+      "Paper":"Rock"
+      "Rock" : "Scissor" }
+print("WELCOME TO THE WORLD OF ROCK PAPER SCISSORS! :)")
+number_of_players=int(input("How many players are playing? "))
+
+def players(number_of_players):
+    if number_of_players<2 or number_of_players>3:
+        print("Sorry this game is only for 2-3 players! :(")
+        return False
+    else:
+        return True
+    
+rounds=int(input("How many times would you like to play?  "))  
+
+def player_choice():
+    global options
+    print("R for rock, P for paper, S for scissor")
+    choosen=input("Choose your weapon!=")
+    if choosen=='R':
+        choice="Rock"
+    elif choosen=='P':
+        choice="Paper"
+    elif choosen=='S':
+        choice="Scissor"
+    else:
+        print("Error! That is not not a valid choice! Please try again:")
+        return player_choice()
+    return choice
+
+def computer_choice():
+    global options
+    return random.choice(options) 
+
+def game(rounds):
+    if players(number_of_players)==True:
+        if rounds==0:
+            return 0
+        PCHOICE=player_choice()
+        CCHOICE=computer_choice()
+        vs=[]
+        vs.append(PCHOICE)
+        vs.append("VS")
+        vs.append(CCHOICE)
+
+        print(" ".join(vs))
+        if PCHOICE==CCHOICE:
+            print("IT'S A TIE")
+        elif PCHOICE=="Rock" and CCHOICE=="Scissor"):
+            print("You win")
+        elif PCHOICE=="Rock" and CCHOICE=="Paper"):
+            print("You lose")
+        elif PCHOICE=="Scissor" and CCHOICE=="Rock" :
+            print("You Lose")
+        elif PCHOICE=="Paper" and CCHOICE=="Rock":
+            print("YOu win")
+        elif PCHOICE=="Rock" and CCHOICE=="Paper" :
+            print("You lose")
+        elif PCHOICE=="Scissor" and CCHOICE=="Paper":
+            print("YOu win")
+        elif PCHOICE=="Paper" and CCHOICE=="Scissor" :
+            print("You lose")
+    return game(rounds-1)
+
+game(rounds)
