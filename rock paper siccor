@@ -52,14 +52,14 @@ def game(rounds,p_score,c_score):
 
             if p_score > c_score:
                     print()
-                    print("*"*19)
+                    print("*"*26)
                     print("You are the final winner!")
-                    print("*"*19)
+                    print("*"*26)
             elif p_score < c_score:
                 print()
-                print("*"*19)
+                print("*"*25)
                 print("Computer is the final winner!")
-                print("*"*19)
+                print("*"*25)
             else:
                 print()
                 print("*"*19)
